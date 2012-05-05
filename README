@@ -1,0 +1,97 @@
+################################################################################
+
+Program		: solr_pager
+Version		: 0.2.4
+Purpose		: Pager component for SOLR
+License		: GNU GPL v3 (see file COPYING)
+Author		: Samuel Behan <samuel_._behan_(at)_dob_._sk> (c) 2000-2011
+Web		: http://devel.dob.sk/solr_pager
+Requirements	: JAVA 1.5, SOLR 1.4+, ANT
+
+################################################################################
+
+---------
+- ABOUT -
+---------
+	solr_pager is a SOLR paging component. It adds paging records to SOLR
+  search results, that can be easily transformed using XSLT writer. You will
+  not need anymore to bother with slow recursive XSLT paging hacks.
+  See PAGING for more info.
+
+-----------------
+- BUG REPORTING -
+-----------------
+	Report bugs or feature request to me (Author).
+
+---------------
+- INSTALATION -
+---------------
+	For use of solr_pager you might need to compile this against yours 
+  SOLR version. Altought this tarball contains some recent version of SOLR jars, 
+  they might be different and compiled version of solr_pager might not work with 
+  yours SOLR. So, you will have to copy your SOLR (located in <webapps>/solr/WEB-INF/lib) 
+  jars to libs directory or alter library paths in build.xml.
+
+  After this simply type
+
+   $ ant
+
+  This will create solr_pager.jar in dist directory, that you should copy to yours
+  SOLR lib dir (usually <webapps>/solr/WEB-INF/lib).
+
+  Finaly you need to define new component that can SOLR use in solrconfig.xml:
+
+  <searchComponent name="pager" class="sk.dob.search.solr.handler.component.PagerComponent"/>
+
+  And add pager component to request processing:
+
+  <requestHandler name="standard" class="solr.SearchHandler" default="true">
+
+    <!-- ... usual solr requestHandler configurations ... ->
+
+    <!-- use pager as last request processing component -->
+    <arr name="last-components">
+      <str>pager</str>
+    </arr>
+  </requestHandler>
+
+
+
+----------------------
+- SOLR QUERY OPTIONS -
+----------------------
+
+	pager		- number of following or preceding page starts to generate
+			  default: 0 (disabled)
+
+	pager.pre	- how many of preceding page starts should be generated
+			  default: 2
+
+----------
+- PAGING -
+----------
+
+	Response with start = 75 and rows = 25.
+
+<response>
+  <lst name="pager">
+    <lst name="pages">		<!-- list of all pages -->
+      <int name="2">25</int>
+      <int name="3">50</int>
+      <int name="4">75</int> <!-- this is actual page -->
+      <int name="5">100</int>
+      <int name="6">125</int>
+      <int name="7">150</int>
+      <int name="8">175</int>
+      <int name="9">200</int>
+      <int name="10">225</int>
+      <int name="11">250</int>
+    </lst>
+    <int name="prev">50</int>	<!-- previous page, with start = 50 -->
+    <int name="next">100</int>	<!-- next page, with start = 75 -->
+    <int name="last">1225</int>	<!-- last page, with start = 1225 -->
+    <int name="actual">4</int> <!-- actual page number -->
+    <int name="count">49</int> <!-- count of all pages -->
+  </lst>
+</response>
+

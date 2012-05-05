@@ -1,0 +1,27 @@
+2011-08-25  Sam <samuel_._behan_(at)_dob_._sk>
+
+	* version 0.2.4 for apache-solr-3.3.0
+
+2010-07-22  Sam <samuel_._behan_(at)_dob_._sk>
+
+	* version 0.2.3
+	* fixed incorrect last page entry and next/last navigators generation (thanks Marcel S. for reporting problem)
+
+2009-12-06  Sam <samuel_._behan_(at)_dob_._sk>
+
+	* version 0.2.2
+	* upgraded libs to stable 1.4 version
+	* pager did not worked for standard search handler, so now
+		we always request result set from solr
+	* added additional checks to prevent working on empty result set
+
+2009-12-06  Sam <samuel_._behan_(at)_dob_._sk>
+
+	* version 0.2.1
+	* added first page navigator
+	* improved first & last paging, now they appear only if first/last page is not visible
+
+2009-12-04  Sam <samuel_._behan_(at)_dob_._sk>
+
+	* version 0.2.0
+	* initial stable version
