@@ -1,10 +1,10 @@
 ################################################################################
 
 Program		: solr_pager
-Version		: 0.2.4
+Version		: 0.2.5
 Purpose		: Pager component for SOLR
 License		: GNU GPL v3 (see file COPYING)
-Author		: Samuel Behan <samuel_._behan_(at)_dob_._sk> (c) 2000-2011
+Author		: Samuel Behan <samuel_._behan_(at)_dob_._sk> (c) 2000-2016
 Web		: http://devel.dob.sk/solr_pager
 Requirements	: JAVA 1.5, SOLR 1.4+, ANT
 

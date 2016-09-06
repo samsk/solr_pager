@@ -6,7 +6,7 @@
      solr_pager
      Provides simple and fast paging for SOLR results
 
-     Samuel Behan <samuel_behan_(at)_dob_._sk>
+     Samuel Behan <samuel_._behan_(at)_dob_._sk>
      ======================================================================
 -->
 <project name="solr_pager" default="default">
@@ -48,7 +48,7 @@
           target: compile              
          ================================= -->
   <target name="compile" depends="depends" description="--&gt; Compile solr_pager sources">
-    <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path" debug="on">
+    <javac srcdir="${src.dir}" destdir="${build.dir}" classpathref="lib.path" debug="on" includeantruntime="false">
  <!--     <compilerarg value="-Xlint:unchecked"/> -->
     </javac>
   </target>

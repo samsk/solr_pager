@@ -51,7 +51,7 @@ public class PagerComponent extends SearchComponent
   {
 	/* notify solr we always need resultset ! */
 	if(rb.req.getParams().getInt(PARAM_PAGER, 0) != 0)
-		rb.setNeedDocSet( true );
+		rb.setNeedDocSet(true);
   }
 
   @Override
@@ -75,7 +75,8 @@ public class PagerComponent extends SearchComponent
 
 	if(rb.getResults().docSet != null)
 		doc_count = rb.getResults().docSet.size();
-	else return;
+	else
+		return;
 
 	/* pager list */
 	NamedList lst = new SimpleOrderedMap<Object>();
@@ -110,11 +111,12 @@ public class PagerComponent extends SearchComponent
 		page_post = 0;
 
 	/* next pages list */
-	int i = (page_actual - page_pre);
-	for(i = (i <= 0 ? 0 : i);
-		i < page_count && i <= (page_actual + page_post);
-		i++)
-		lst2.add(Integer.toString(i + 1), i * rows);
+	int idx = (page_actual - page_pre);
+	for(idx = (idx <= 0 ? 0 : idx);
+			idx < page_count && idx <= (page_actual + page_post);
+				idx++) {
+		lst2.add(Integer.toString(idx + 1), idx * rows);
+	}
 	lst.add("pages", lst2);
 
 	/* navi */
@@ -153,22 +155,17 @@ public class PagerComponent extends SearchComponent
   
   @Override
   public String getDescription() {
-    return "Pager";
+    return "Solr Pager";
   }
   
   @Override
   public String getVersion() {
-    return "$Revision: 1 $";
+    return "1.0";
   }
-  
-  @Override
-  public String getSourceId() {
-    return "$Id: $";
-  }
-  
+
   @Override
   public String getSource() {
-    return "$URL: http://devel.dob.sk/solr_pager $";
+    return "URL: https://devel.dob.sk/solr_pager";
   }
   
   @Override
